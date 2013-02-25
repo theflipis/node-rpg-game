@@ -5,6 +5,7 @@ function Race() {
 	var aRaces = ["Human", "Elf", "Dwarf", "Orc"];
 	var aMods = [];
 	var aHeightWeight = [];
+  var aAgeRange = [];
 	
 	aMods["Human"] = {"str" : 0, "dex" : 0, "con" : 0, "int" : 0, "wis" : 0, "cha" : +2};
 	aMods["Elf"] = {"str" : -1, "dex" : +2, "con" : -2, "int" : 0, "wis" : -1, "cha" : +2};
@@ -15,6 +16,11 @@ function Race() {
 	aHeightWeight["Elf"] = {"hMin" : 140, "hMax" : 170, "wMin" : 40, "wMax" : 70};
 	aHeightWeight["Dwarf"] = {"hMin" : 110, "hMax" : 150, "wMin" : 50, "wMax" : 90};
 	aHeightWeight["Orc"] = {"hMin" : 180, "hMax" : 220, "wMin" : 80, "wMax" : 120};
+  
+  aAgeRange["Human"] = {"aMin": 16, "aMax": 60};
+  aAgeRange["Elf"] = {"aMin": 25, "aMax": 100};
+  aAgeRange["Dwarf"] = {"aMin": 30, "aMax": 80};
+  aAgeRange["Orc"] = {"aMin":14, "aMax": 40};
 	
 	var makeHeightWeight = function(race) {
 		var rangeHeight = aHeightWeight[race].hMax - aHeightWeight[race].hMin;
@@ -23,6 +29,12 @@ function Race() {
 		var totalWeight = (aHeightWeight[race].wMin + Math.floor(Math.random() * rangeWeight));
 		return {"height" : totalHeight, "weight" : totalWeight};
 	};
+  
+  var makeAge = function(race) {
+    var ageRange = aAgeRange[race].aMax - aAgeRange[race].aMin;
+    var age = (aAgeRange[race].aMin + Math.floor(Math.random() * ageRange));
+    return age;
+  }
 	
 	this.assignRace = function(race, oActor) {	
 		if(typeof(oActor) !== "object") {
@@ -38,6 +50,7 @@ function Race() {
 			var hw = makeHeightWeight(race);
 			oActor.setHeight(hw.height);
 			oActor.setWeight(hw.weight);
+      oActor.setAge(makeAge(race));
 		}
 	},
 	this.getRandomRace = function() {
