@@ -1,1 +1,4 @@
-{"test": "cosa", "test2": "mesa", "test3": "casa"}
+{"statAttrMod" : {"str" : 0, "dex" : 0, "con" : 0, "int" : 0, "wis" : 0, "cha" : 0}, 
+ "statHWA" : {"hMin" : 160, "hMax" : 190, "wMin" : 60, "wMax" : 90, "aMin": 16, "aMax": 60},
+ "statSkillMod" : {}
+}
