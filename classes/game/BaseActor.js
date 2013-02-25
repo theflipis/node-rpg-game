@@ -1,3 +1,6 @@
+/**
+ * Base Actor class. Template for a character in the game.
+ */
 function BaseActor() {
   
   // BASE ATTRIBUTES
